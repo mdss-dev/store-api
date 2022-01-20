@@ -7,6 +7,11 @@ import productsRouter from "./routes/product.route.js";
 import salesRouter from "./routes/sale.route.js";
 import suppliersRouter from "./routes/supplier.route.js";
 
+//instanciação do express
+const app = express();
+
+//configuração de log
+
 const { combine, timestamp, label, printf } = winston.format;
 const myFormat = printf(({ level, message, label, timestamp }) => {
   return `${timestamp} [${label}] ${level} ${message}`;
@@ -20,14 +25,23 @@ global.logger = winston.createLogger({
   format: combine(label({ label: "store-api" }), timestamp(), myFormat),
 });
 
-const app = express();
-
+//para o express usar json
 app.use(express.json());
+
+// permissão acesso de qualquer ip
 app.use(cors());
 
+// tratamento das rotas
 app.use("/client", clientsRouter);
 app.use("/product", productsRouter);
 app.use("/sale", salesRouter);
 app.use("/supllier", suppliersRouter);
 
+//Middleware de error
+app.use((err, req, res, next) => {
+  logger.error(`${req.method} ${req.url} - ${err.message}`);
+  res.status(400).send({ error: err.message });
+});
+
+//servidor iniciado na porta 3000
 app.listen(3000, () => console.log("Api started!"));
