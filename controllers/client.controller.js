@@ -1,3 +1,5 @@
+import ClientService from "../services/client.service.js";
+
 // função para criar um cliente
 async function createClient(req, res, next) {
   try {
@@ -13,7 +15,9 @@ async function createClient(req, res, next) {
     ) {
       throw new Error("Name, Cpf, Phone, Email e Address são obrigatórios.");
     }
-    res.send({});
+    //envia os dados do cliente para o service
+    res.send(await ClientService.createClient(client));
+    //log de informação
     logger.info(`POST /client - ${JSON.stringify(client)}`);
   } catch (err) {
     next(err);
