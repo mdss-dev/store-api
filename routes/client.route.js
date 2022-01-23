@@ -4,5 +4,5 @@ import ClientController from "../controllers/client.controller.js";
 const router = express.Router();
 
 router.post("/", ClientController.createClient);
-
+router.get("/", ClientController.getClients);
 export default router;
