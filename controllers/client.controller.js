@@ -33,7 +33,17 @@ async function getClients(req, res, next) {
   }
 }
 
+async function getClient(req, res, next) {
+  try {
+    res.send(await ClientService.getClient(req.params.id));
+    logger.info("GET /client ");
+  } catch (err) {
+    next(err);
+  }
+}
+
 export default {
   createClient,
   getClients,
+  getClient,
 };

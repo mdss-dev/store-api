@@ -5,11 +5,16 @@ async function createClient(client) {
   return await ClientRepository.insertClient(client); //envia os dados do client para o DB
 }
 
-async function getClients(client) {
+async function getClients() {
   return await ClientRepository.getClients(); //retorna os dados dos clients
+}
+
+async function getClient(id) {
+  return await ClientRepository.getClient(id);
 }
 
 export default {
   createClient,
   getClients,
+  getClient,
 };
