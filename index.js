@@ -35,7 +35,7 @@ app.use(cors());
 app.use("/client", clientsRouter);
 app.use("/product", productsRouter);
 app.use("/sale", salesRouter);
-app.use("/supllier", suppliersRouter);
+app.use("/supplier", suppliersRouter);
 
 //Middleware de error
 app.use((err, req, res, next) => {
