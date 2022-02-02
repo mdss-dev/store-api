@@ -34,8 +34,7 @@ async function getSuppliers(req, res, next) {
 
 async function getSupplier(req, res, next) {
   try {
-    await SupplierService.getSupplier(req.params.id);
-    res.end();
+    res.send(await SupplierService.getSupplier(req.params.id));
     logger.info("GET /supplier ");
   } catch (err) {
     next(err);
