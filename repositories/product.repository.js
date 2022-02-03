@@ -52,13 +52,13 @@ async function updateProduct(product) {
   const conn = await connect();
   try {
     const sql =
-      "UPDATE products SET name = $1, description = $2, stock = $3, value = $4, suplliers_id = $5 WHERE product_id = $6 RETURNING *";
+      "UPDATE products SET name = $1, description = $2, stock = $3, value = $4, supplier_id = $5 WHERE product_id = $6 RETURNING *";
     const values = [
       product.name,
       product.description,
       product.stock,
       product.value,
-      product.supllier_id,
+      product.supplier_id,
       product.product_id,
     ];
     const res = await conn.query(sql, values);
