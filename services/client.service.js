@@ -6,19 +6,31 @@ async function createClient(client) {
 }
 
 async function getClients() {
-  return await ClientRepository.getClients(); //retorna os dados dos clients
+  if (await ClientRepository.getClients()) {
+    return await ClientRepository.getClients(); //retorna os dados dos clients
+  }
+  throw new Error("Não existem clients cadastrados.");
 }
 
 async function getClient(id) {
-  return await ClientRepository.getClient(id);
+  if (await ClientRepository.getClient(id)) {
+    return await ClientRepository.getClient(id);
+  }
+  throw new Error("O client_id informado não existe.");
 }
 
 async function deleteClient(id) {
-  await ClientRepository.deleteClient(id);
+  if (await ClientRepository.getClient(id)) {
+    return await ClientRepository.deleteClient(id);
+  }
+  throw new Error("O client_id informado não existe.");
 }
 
 async function updateClient(client) {
-  return await ClientRepository.updateClient(client);
+  if (await ClientRepository.getClient(client.client_id)) {
+    return await ClientRepository.updateClient(client);
+  }
+  throw new Error("O client_id informado não existe.");
 }
 
 export default {

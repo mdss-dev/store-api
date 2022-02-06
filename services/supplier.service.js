@@ -6,15 +6,24 @@ async function createSupplier(supplier) {
 }
 
 async function getSuppliers() {
-  return await SupplierRepository.getSuppliers(); //retorna os dados dos suppliers
+  if (await SupplierRepository.getSuppliers()) {
+    return await SupplierRepository.getSuppliers(); //retorna os dados dos suppliers
+  }
+  throw new Error("Não existem suppliers cadastrados.");
 }
 
 async function getSupplier(id) {
-  return await SupplierRepository.getSupplier(id);
+  if (await SupplierRepository.getSupplier(id)) {
+    return await SupplierRepository.getSupplier(id);
+  }
+  throw new Error("O supplier_id informado não existe.");
 }
 
 async function deleteSupplier(id) {
-  await SupplierRepository.deleteSupplier(id);
+  if (SupplierRepository.getSupplier(id)) {
+    await SupplierRepository.deleteSupplier(id);
+  }
+  throw new Error("O supplier_id informado não existe");
 }
 
 async function updateSupplier(supplier) {
