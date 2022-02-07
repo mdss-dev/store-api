@@ -20,14 +20,17 @@ async function getSupplier(id) {
 }
 
 async function deleteSupplier(id) {
-  if (SupplierRepository.getSupplier(id)) {
+  if (await SupplierRepository.getSupplier(id)) {
     await SupplierRepository.deleteSupplier(id);
   }
   throw new Error("O supplier_id informado não existe");
 }
 
 async function updateSupplier(supplier) {
-  return await SupplierRepository.updateSupplier(supplier);
+  if (await SupplierRepository.getSupplier(supplier.supplier_id)) {
+    return await SupplierRepository.updateSupplier(supplier);
+  }
+  throw new Error("O supplier_id informado não existe");
 }
 
 export default {
