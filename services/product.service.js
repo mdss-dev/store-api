@@ -24,7 +24,7 @@ async function getProduct(id) {
 
 async function deleteProduct(id) {
   if (await ProductRepository.getProduct(id)) {
-    await ProductRepository.deleteProduct(id);
+    return await ProductRepository.deleteProduct(id);
   }
   throw new Error("O product informado não existe");
 }
