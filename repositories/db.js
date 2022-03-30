@@ -1,4 +1,7 @@
 import pg from "pg";
+import sequelize from "sequelize";
+
+const sequelize = sequelize;
 
 async function connect() {
   if (global.connection) {
@@ -12,4 +15,4 @@ async function connect() {
   return pool.connect();
 }
 
-export { connect };
+export default sequelize;
