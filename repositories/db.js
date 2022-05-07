@@ -5,7 +5,7 @@ const sequelize = new Sequelize(
   {
     dialect: "postgres",
     define: {
-      timestamp: false, //banco nao grava data e hora da criação ou modificação dos registros
+      timestamps: false, //banco nao grava data e hora da criação ou modificação dos registros
     },
   }
 );

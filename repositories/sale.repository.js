@@ -1,4 +1,4 @@
-import { connect } from "./db.js";
+import connect from "./db.js";
 
 //método para criar sale
 async function insertSale(sale) {

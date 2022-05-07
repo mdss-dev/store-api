@@ -56,7 +56,7 @@ async function updateClient(req, res, next) {
   try {
     let client = req.body;
     if (
-      !client.client_id ||
+      !client.clientId ||
       !client.name ||
       !client.cpf ||
       !client.phone ||
