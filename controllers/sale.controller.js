@@ -4,7 +4,7 @@ async function createSale(req, res, next) {
   try {
     let sale = req.body;
 
-    if (!sale.value || !sale.date || !sale.client_id || !sale.product_id) {
+    if (!sale.value || !sale.date || !sale.clientId || !sale.productId) {
       throw new Error("Value, Date, Client ID e Product ID são obrigatórios.");
     }
 
@@ -48,11 +48,11 @@ async function updateSale(req, res, next) {
   try {
     let sale = req.body;
     if (
-      !sale.sale_id ||
+      !sale.saleId ||
       !sale.value ||
       !sale.date ||
-      !sale.client_id ||
-      !sale.product_id
+      !sale.clientId ||
+      !sale.productId
     ) {
       throw new Error(
         "Sale ID, Value, Date, Client ID e Product ID  são obrigatórios."

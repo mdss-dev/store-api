@@ -27,7 +27,7 @@ async function deleteSupplier(id) {
 }
 
 async function updateSupplier(supplier) {
-  if (await SupplierRepository.getSupplier(supplier.supplier_id)) {
+  if (await SupplierRepository.getSupplier(supplier.supplierId)) {
     return await SupplierRepository.updateSupplier(supplier);
   }
   throw new Error("O supplier_id informado não existe");

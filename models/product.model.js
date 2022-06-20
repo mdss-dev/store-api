@@ -1,5 +1,5 @@
 import Sequelize from "sequelize";
-import db from "../repositories/db";
+import db from "../repositories/db.js";
 import Supplier from "./supplier.model.js";
 
 const Product = db.define(
@@ -28,9 +28,9 @@ const Product = db.define(
       allowNull: false,
     },
   },
-  { underscored: true }
-); //informar que o banco esta trabalhando com underline ao invés de camelCase(que é o padrão so sequelize)
+  { underscored: true } //informar que o banco esta trabalhando com underline ao invés de camelCase(que é o padrão so sequelize)
+);
 
-Product.belongsTo(Supplier, { foreignkey: "supplierId" });
+Product.belongsTo(Supplier, { foreignKey: "supplierId" });
 
 export default Product;

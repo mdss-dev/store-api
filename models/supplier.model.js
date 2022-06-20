@@ -1,7 +1,7 @@
 import Sequelize from "sequelize";
-import db from "../repositories/db";
+import db from "../repositories/db.js";
 
-const Supllier = db.define(
+const Supplier = db.define(
   "suppliers",
   {
     supplierId: {
@@ -35,4 +35,4 @@ const Supllier = db.define(
   { underscored: true } //informar que o banco esta trabalhando com underline ao invés de camelCase(que é o padrão so sequelize)
 );
 
-export default Supllier;
+export default Supplier;
